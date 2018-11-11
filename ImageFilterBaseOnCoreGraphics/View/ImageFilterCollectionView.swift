@@ -42,7 +42,7 @@ class ImageFilterCollectionView: UICollectionView {
         
         delegate = self
         dataSource = self
-        contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 0)
+        contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         register(ImageFilterCell.self, forCellWithReuseIdentifier: cellID)
 
     }
@@ -90,8 +90,8 @@ extension ImageFilterCollectionView: UICollectionViewDelegate, UICollectionViewD
         
         let filterCell = cell as! ImageFilterCell
         if previews.count <= indexPath.row {
-            if let colorMatrix = colorMatrixAt(indexPath) {
-                previews.append(origionalImage.filter(colorMatrix: colorMatrix))
+            if let colorMatrix = colorMatrixAt(indexPath), let origionalImage = origionalImage.filter(colorMatrix: colorMatrix) {
+                previews.append(origionalImage)
             } else {
                 previews.append(origionalImage)
             }

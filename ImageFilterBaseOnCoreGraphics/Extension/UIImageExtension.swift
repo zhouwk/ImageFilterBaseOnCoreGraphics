@@ -12,11 +12,11 @@ import CoreGraphics
 extension UIImage {
     
     /// 遍历图片上像素，获取像素色彩信息
-    func traversePixels(handler: ((CUnsignedChar, CUnsignedChar, CUnsignedChar, CUnsignedChar) -> (CUnsignedChar, CUnsignedChar, CUnsignedChar, CUnsignedChar))?) -> UIImage {
+    func traversePixels(handler: ((CUnsignedChar, CUnsignedChar, CUnsignedChar, CUnsignedChar) -> (CUnsignedChar, CUnsignedChar, CUnsignedChar, CUnsignedChar))?) -> UIImage? {
         
         
         guard let cgImage = cgImage else {
-            return self
+            return nil
         }
         
         let ctx = CGContext(data: nil, width: cgImage.width,
@@ -64,8 +64,10 @@ extension UIImage {
         
         let size = cgImage.bytesPerRow * cgImage.height
         let newData = malloc(size)
-        
+        memset(newData, 0, size)
         memcpy(newData, sourceData, size)
+        // 直接使用ctx.data会发生野指针异常，所以必须要把ctx.data中的色彩信息拷贝到另一块内存中
+        // 通过官方APIctx.image获取图片，内部应该也是开辟了新内存
         let provider = CGDataProvider.init(dataInfo: nil, data: newData!, size: size) { (dataInfo, newData, size) in
             
         }!
@@ -80,13 +82,15 @@ extension UIImage {
                                     decode: cgImage.decode,
                                     shouldInterpolate: cgImage.shouldInterpolate,
                                     intent: cgImage.renderingIntent) {
-            return UIImage(cgImage: newCGImage)
+            let filteredImage = FilterImage(cgImage: newCGImage)
+            filteredImage.rawData = newData
+            return filteredImage
         }
-        return self
+        return nil
     }
     
     
-    func filter(colorMatrix: [Float]) -> UIImage {
+    func filter(colorMatrix: [Float]) -> UIImage? {
         
         return traversePixels { (red, green, blue, alpha) -> (CUnsignedChar, CUnsignedChar, CUnsignedChar, CUnsignedChar) in
             
@@ -101,7 +105,6 @@ extension UIImage {
             return (newRed, newGreen, newBlue, newAlpha)
         }
     }
-    
     
     /// 颜色色值限制在0 - 255
     private func fixColorComponent(_ component: Float) -> CUnsignedChar {

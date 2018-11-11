@@ -22,6 +22,7 @@
 		F4A38D4A2193EA4500ABAB37 /* ImageFilterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A38D492193EA4500ABAB37 /* ImageFilterCollectionView.swift */; };
 		F4A38D4D2193ECF800ABAB37 /* ImageFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A38D4C2193ECF800ABAB37 /* ImageFilterCell.swift */; };
 		F4D0E2C32194A078005E0604 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D0E2C22194A078005E0604 /* UIImageExtension.swift */; };
+		F4E008BA219883A5006672E0 /* FilterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E008B9219883A5006672E0 /* FilterImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		F4A38D492193EA4500ABAB37 /* ImageFilterCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterCollectionView.swift; sourceTree = "<group>"; };
 		F4A38D4C2193ECF800ABAB37 /* ImageFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterCell.swift; sourceTree = "<group>"; };
 		F4D0E2C22194A078005E0604 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		F4E008B9219883A5006672E0 /* FilterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				F4A38D492193EA4500ABAB37 /* ImageFilterCollectionView.swift */,
 				F4A38D4C2193ECF800ABAB37 /* ImageFilterCell.swift */,
+				F4E008B9219883A5006672E0 /* FilterImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				F4496626219530C100F85FBD /* ColorMatrix.swift in Sources */,
 				F4A38D452193E99400ABAB37 /* ImageFilterViewController.swift in Sources */,
 				F4D0E2C32194A078005E0604 /* UIImageExtension.swift in Sources */,
+				F4E008BA219883A5006672E0 /* FilterImage.swift in Sources */,
 				F432DFA121941C8800AA12B8 /* UIViewExtension.swift in Sources */,
 				F432DFB2219440B500AA12B8 /* Co.m in Sources */,
 				F432DFA5219422EA00AA12B8 /* Filter.swift in Sources */,

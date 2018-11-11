@@ -18,7 +18,9 @@ class ViewController: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     
         let filterVC = ImageFilterViewController()
-        present(filterVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(filterVC, animated: true, completion: nil)
+        }
     }
 }
 
